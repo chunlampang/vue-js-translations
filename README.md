@@ -11,11 +11,11 @@ Vue.use(translation, {
     locales: { en, zh }
 });
 
-#locales/en.js
+# locales/en.js
 export default {
     error:{
         '404':'Page Not Found',
     }
 }
-#dom
+# dom
 <p>{{$t.error['404']}}</p>
