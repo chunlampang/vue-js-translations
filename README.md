@@ -1,4 +1,4 @@
-# vue-translation
+# vue-translations
 Extremely simple code, flexible, and Javascript friendly translation plugin for Vue
 # Example
 ## Set locale
