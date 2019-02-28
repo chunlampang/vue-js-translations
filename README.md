@@ -1,7 +1,25 @@
 # vue-translation
 Extremely simple code, flexible, and Javascript friendly translation plugin for Vue
-
-# Usage
+# Example
+## Set locale
+<pre>
+this.$t = 'en';
+</pre>
+## dom
+```html
+<p>{{$t.message.welcome('guest')}}</p>
+<p>{{$t.error['404']}}</p>
+```
+## pure Javascript
+<pre>
+import translation from 'your-path';
+//set
+translation.locale = 'en';
+//get
+translation.locale.message.welcome('guest');
+translation.locale.error['404'];
+</pre>
+## Import
 <pre>
 import translation from 'your-path';
 import en from '@/locales/en';
@@ -12,7 +30,7 @@ Vue.use(translation, {
     locales: { en, zh }
 });
 </pre>
-### or
+### or use Webpack require.context
 <pre>
 import translation from 'your-path';
 
@@ -49,8 +67,3 @@ export default {
     }
 }
 </pre>
-## dom
-```html
-<p>{{$t.message.welcome('guest')}}</p>
-<p>{{$t.error['404']}}</p>
-```

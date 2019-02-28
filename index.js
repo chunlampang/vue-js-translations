@@ -7,7 +7,7 @@ const translation = {
     set locale(code) {
         _code = code;
     },
-    install(Vue, { alias = '$translation', locales }) {
+    install(Vue, { alias = '$t', locales }) {
         _locales = locales;
         Vue.prototype.__defineGetter__(alias, this.__lookupGetter__('locale'));
         Vue.prototype.__defineSetter__(alias, this.__lookupSetter__('locale'));
