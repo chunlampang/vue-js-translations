@@ -50,9 +50,9 @@ export default {
 }
 </pre>
 ## dom
-<pre>
 ```html
+<pre>
 <p>{{$t.message.welcome('guest')}}</p>
 <p>{{$t.error['404']}}</p>
-```
 </pre>
+```
