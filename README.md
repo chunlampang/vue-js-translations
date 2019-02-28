@@ -1,9 +1,9 @@
 # vue-translation
-Extremely simple code and flexible translation plugin for Vue
+Extremely simple code, flexible, and Javascript friendly translation plugin for Vue
 
 # Usage
 <pre>
-import Vue from 'vue';
+import translation from 'your-path';
 import en from '@/locales/en';
 import zh from '@/locales/zh';
 
@@ -12,23 +12,45 @@ Vue.use(translation, {
     locales: { en, zh }
 });
 </pre>
-## locales/en.js
+### or
 <pre>
-export default {
-    error:{
-        '404':'Page Not Found',
-    }
-}
+import translation from 'your-path';
+
+let locales = [];
+let req = require.context("@/locales", true, /\.js$/);
+req.keys().forEach(key => {
+    locales[key.match(/^.\/(.*).js$/)[1]] = req(key).default
+});
+
+Vue.use(translation, {
+    alias: '$t',
+    locales
+});
 </pre>
 ## locales/en.js
 <pre>
 export default {
-    error:{
+    message: {
+        'welcome': (name) => `Welcome ${name}.`,
+    },
+    error: {
+        '404': 'Page Not Found',
+    }
+}
+</pre>
+## locales/zh.js
+<pre>
+export default {
+    message: {
+        'welcome': (name) => `歡迎，${name}。`,
+    },
+    error: {
         '404': '找不到頁面',
     }
 }
 </pre>
 ## dom
 <pre>
+<p>{{$t.message.welcome('guest')}}</p>
 <p>{{$t.error['404']}}</p>
 </pre>
