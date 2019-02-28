@@ -1,7 +1,7 @@
 # vue-translations
 Extremely simple code, flexible, and Javascript friendly translations plugin for Vue
 # Installation
-Just download here and place it inside your project. No npm.
+Just download and place it inside your project. No npm.
 # Usage
 ## Set locale
 ```javascript
