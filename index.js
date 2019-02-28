@@ -1,6 +1,6 @@
 let _code, _locales;
 
-const translation = {
+const translations = {
     get locale() {
         return _locales[_code];
     },
@@ -13,4 +13,4 @@ const translation = {
         Vue.prototype.__defineSetter__(alias, this.__lookupSetter__('locale'));
     },
 };
-export default translation;
+export default translations;
