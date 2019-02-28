@@ -51,8 +51,6 @@ export default {
 </pre>
 ## dom
 ```html
-<pre>
 <p>{{$t.message.welcome('guest')}}</p>
 <p>{{$t.error['404']}}</p>
-</pre>
 ```
