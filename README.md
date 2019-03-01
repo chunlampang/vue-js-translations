@@ -7,8 +7,9 @@ Just download and place it inside your project. No npm.
 ```javascript
 this.$t = 'en';
 ```
-## dom
+## Vue dom
 ```vue
+<p>{{$t.lang}}</p>
 <p>{{$t.message.welcome('guest')}}</p>
 <p>{{$t.error['404']}}</p>
 ```
@@ -18,6 +19,7 @@ import translations from 'your-path';
 //set
 translations.locale = 'en';
 //get
+translations.locale.lang;
 translations.locale.message.welcome('guest');
 translations.locale.error['404'];
 ```
@@ -50,6 +52,7 @@ Vue.use(translations, {
 ## /locales/en.js
 ```javascript
 export default {
+    lang: 'en', // <-- You can use {{$t.lang}} to get current language code now
     message: {
         'welcome': (name) => `Welcome ${name}.`,
     },
@@ -61,6 +64,7 @@ export default {
 ## /locales/zh.js
 ```javascript
 export default {
+    lang: 'zh',
     message: {
         'welcome': (name) => `歡迎，${name}。`,
     },
