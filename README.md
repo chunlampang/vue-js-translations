@@ -10,8 +10,8 @@ this.$t = 'en';
 ## Vue dom
 ```vue
 <p>{{$t.lang}}</p>
-<p>{{$t.message.welcome('guest')}}</p>
-<p>{{$t.error['404']}}</p>
+<p>{{$t.messages.welcome('guest')}}</p>
+<p>{{$t.errors['404']}}</p>
 ```
 ## In pure Javascript
 ```javascript
@@ -20,8 +20,8 @@ import translations from 'your-path';
 translations.locale = 'en';
 //get
 translations.locale.lang;
-translations.locale.message.welcome('guest');
-translations.locale.error['404'];
+translations.locale.messages.welcome('guest');
+translations.locale.errors['404'];
 ```
 ## Import
 ```javascript
@@ -53,10 +53,22 @@ Vue.use(translations, {
 ```javascript
 export default {
     lang: 'en', // <-- You can use {{$t.lang}} to get current language code now
-    message: {
-        'welcome': (name) => `Welcome ${name}.`,
+    pages: { // For menus
+        home: 'Home',
     },
-    error: {
+    actions: { // For buttons
+		login: 'Login',
+		logout: 'Logout',
+    },
+    keywords: {
+        development: 'Development',
+    },
+    messages: {
+        welcome: (name) => `Welcome ${name}.`,
+    },
+    validations: {
+    },
+    errors: {
         '404': 'Page Not Found',
     }
 }
@@ -65,10 +77,22 @@ export default {
 ```javascript
 export default {
     lang: 'zh',
-    message: {
-        'welcome': (name) => `歡迎，${name}。`,
+    pages: {
+        home: '首頁'
     },
-    error: {
+    actions: {
+        login: '登入',
+        logout: '登出',
+    },
+    keywords: {
+        development: '開發'
+    },
+    messages: {
+        welcome: (name) => `歡迎，${name}。`,
+    },
+    validations: {
+    },
+    errors: {
         '404': '找不到頁面',
     }
 }
