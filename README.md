@@ -57,8 +57,8 @@ export default {
         home: 'Home',
     },
     actions: { // For buttons
-		login: 'Login',
-		logout: 'Logout',
+        login: 'Login',
+        logout: 'Logout',
     },
     keywords: {
         development: 'Development',
