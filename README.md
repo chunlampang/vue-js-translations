@@ -97,3 +97,7 @@ export default {
     }
 }
 ```
+## With vue-router
+```vue
+<router-view v-if="$route.params.locale" :key="$route.params.locale"/>
+```
