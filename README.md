@@ -98,6 +98,8 @@ export default {
 }
 ```
 ## With vue-router
+If you use URL to control the locale, e.g. your-ip/:locale/sub-path\
+You should add a key into the router-view tag for updating the locale.
 ```vue
 <router-view v-if="$route.params.locale" :key="$route.params.locale"/>
 ```
