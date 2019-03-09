@@ -31,6 +31,7 @@ import zh from '@/locales/zh';
 
 Vue.use(translations, {
     alias: '$t',
+    defaultLocale: 'en',
     locales: { en, zh }
 });
 ```
@@ -46,6 +47,7 @@ req.keys().forEach(key => {
 
 Vue.use(translations, {
     alias: '$t',
+    defaultLocale: 'en',
     locales
 });
 ```
