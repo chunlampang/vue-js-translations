@@ -100,7 +100,33 @@ export default {
 }
 ```
 ## With vue-router
-If you use URL to control the locale, e.g. your-ip/:locale/sub-path\
+If you use URL to control the locale, e.g. http://localhost/en/path
+### VueRouter config
+```javascript
+const router = new VueRouter({
+  routes: [
+    {
+      path: '/',
+      redirect: '/en' //default
+    },
+    {
+      path: '/:locale',
+      component: () => import('@/components/AppFrame'), // component which contains child router-view
+      children: routes // your routes
+    },
+  ]
+});
+
+router.beforeEach((to, from, next) => {
+  if (!['en','zh'].includes(to.params.locale)) {
+    next('en' + to.fullPath);
+    return;
+  }
+  translations.locale = to.params.locale; //update locale
+  next();
+});
+```
+### Root router-view
 You should add a key into the router-view tag for updating the locale.
 ```vue
 <router-view :key="$route.params.locale"/>
