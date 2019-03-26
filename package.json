@@ -1,0 +1,19 @@
+{
+  "name": "vue-translations",
+  "version": "1.0.0",
+  "description": "Extremely simple code, flexible, and Javascript friendly translations plugin for Vue.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chunlampang/vue-translations.git"
+  },
+  "author": "chunlampang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chunlampang/vue-translations/issues"
+  },
+  "homepage": "https://github.com/chunlampang/vue-translations#readme"
+}
