@@ -17,7 +17,7 @@ this.$t = 'en';
 ```
 ## In pure Javascript
 ```javascript
-import translations from 'your-path';
+import translations from 'vue-translations';
 //set
 translations.locale = 'en';
 //get
@@ -27,7 +27,7 @@ translations.locale.errors['404'];
 ```
 ## Import
 ```javascript
-import translations from 'your-path';
+import translations from 'vue-translations';
 import en from '@/locales/en';
 import zh from '@/locales/zh';
 
@@ -39,7 +39,8 @@ Vue.use(translations, {
 ```
 ### or use Webpack require.context
 ```javascript
-import translations from 'your-path';
+import Vue from 'vue';
+import translations from 'vue-translations';
 
 let locales = [];
 let req = require.context("@/locales", true, /\.js$/);
