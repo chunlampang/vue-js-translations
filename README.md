@@ -1,9 +1,10 @@
 # vue-translations
 Extremely simple code, flexible, and Javascript friendly translations plugin for Vue.
-# Installation (Require Git)
+# Installation
 ```
-npm install chunlampang/vue-translations
+npm install chunlampang/vue-translations //Require Git (https://git-scm.com/)
 ```
+Or just download
 # Usage
 ## Set locale
 ```javascript
