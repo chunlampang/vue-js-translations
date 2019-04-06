@@ -31,12 +31,12 @@ translations.locale.errors['404'];
 ```javascript
 import translations from 'vue-translations';
 import en from '@/locales/en';
-import zh from '@/locales/zh';
+import zhHant from '@/locales/zh-hant';
 
 Vue.use(translations, {
     alias: '$t',
     defaultLocale: 'en',
-    locales: { en, zh }
+    locales: { en, "zh-hant": zhHant }
 });
 ```
 ### or use Webpack require.context
