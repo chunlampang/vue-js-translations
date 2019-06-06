@@ -1,9 +1,9 @@
 # vue-translations
-Extremely simple code, flexible, and Javascript friendly translations plugin for Vue.
+Support multiple translations instance and Javascript friendly translations plugin for Vue.
 # Installation
 npm install require git (https://git-scm.com/)
 ```
-npm install chunlampang/vue-translations
+npm install chunlampang/vue-translations-multiple
 ```
 Or just download zip
 # Usage
@@ -19,30 +19,44 @@ this.$t = 'en';
 ```
 ## In pure Javascript
 ```javascript
-import translations from 'vue-translations';
+import translations from 'your/path';
 //set
-translations.locale = 'en';
+translations.$t = 'en';
 //get
-translations.locale.lang;
-translations.locale.messages.welcome('guest');
-translations.locale.errors['404'];
+translations.$t.lang;
+translations.$t.messages.welcome('guest');
+translations.$t.errors['404'];
+```
+## Static variables
+```javascript
+$t.locale;// current locale key
+$t.instance;// get translations instance
 ```
 ## Import
 ```javascript
-import translations from 'vue-translations';
+import translations from 'your/path';
 import en from '@/locales/en';
-import zhHant from '@/locales/zh-hant';
+import zh from '@/locales/zh';
 
 Vue.use(translations, {
-    alias: '$t',
+    alias: '$t', //default $t
     defaultLocale: 'en',
-    locales: { en, "zh-hant": zhHant }
+    locales: { en, zh }
+});
+
+// Can support multiple translations instance in one application
+import en2 from '@/locales2/en';
+import zhHant2 from '@/locales2/zh-hant';
+Vue.use(translations, {
+    alias: '$t2',// use alias to identify each instance
+    defaultLocale: 'en',
+    locales: { 'en': en2, 'zh-hant': zhHant2 }
 });
 ```
-### or use Webpack require.context
+### or get ALL locales from directory
 ```javascript
 import Vue from 'vue';
-import translations from 'vue-translations';
+import translations from 'your/path';
 
 let locales = [];
 let req = require.context("@/locales", true, /\.js$/);
@@ -59,7 +73,13 @@ Vue.use(translations, {
 ## /locales/en.js
 ```javascript
 export default {
-    lang: 'en', // <-- You can use {{$t.lang}} to get current language code now
+    /*
+     * Since "locale", "instance" are static variables,
+     * the value set to them will be overrided!
+     */
+    locale: 'will be overrided',
+    instance: 'will be overrided',
+
     pages: { // For menus
         home: 'Home',
     },
@@ -83,7 +103,6 @@ export default {
 ## /locales/zh.js
 ```javascript
 export default {
-    lang: 'zh',
     pages: {
         home: '首頁'
     },
@@ -108,11 +127,14 @@ export default {
 If you use URL to control the locale, e.g. http://localhost/en/path
 ### VueRouter config
 ```javascript
+import translations from 'your/path';
+const instanceT = translations.$t.instance;
+
 const router = new VueRouter({
   routes: [
     {
       path: '/',
-      redirect: '/en' //default
+      redirect: '/' + instanceT.defaultLocale // default
     },
     {
       path: '/:locale',
@@ -123,11 +145,12 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  if (!['en','zh'].includes(to.params.locale)) {
-    next('en' + to.fullPath);
+  let locale = to.params.locale;
+  if (!instanceT.localeKeys.includes(locale)) {
+    next('/' + instanceT.defaultLocale + to.fullPath);
     return;
   }
-  translations.locale = to.params.locale; //update locale
+  translations.$t = locale; //update locale
   next();
 });
 ```
