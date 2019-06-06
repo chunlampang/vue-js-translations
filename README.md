@@ -1,9 +1,9 @@
-# vue-translations
-Support multiple translations instance and Javascript friendly translations plugin for Vue.
+# vue-js-translations
+Javascript friendly translations plugin for Vue.
 # Installation
 npm install require git (https://git-scm.com/)
 ```
-npm install chunlampang/vue-translations-multiple
+npm install chunlampang/vue-js-translations
 ```
 Or just download zip
 # Usage
